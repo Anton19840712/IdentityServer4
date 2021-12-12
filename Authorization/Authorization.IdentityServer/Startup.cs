@@ -10,11 +10,12 @@ namespace Authorization.IdentityServer
         public void ConfigureServices(IServiceCollection services)
         {
             //add package identityServer4, then add app.UseIdentity, then services.AddIdentityServer();
+            //could work in in-memory or database style
             services.AddIdentityServer()
                 .AddInMemoryClients(Configuration.GetClients())//Xamarin, Console, Angular, etc.
-                .AddInMemoryApiResources(Configuration.GetApiResources())
-                .AddInMemoryIdentityResources(Configuration.GetIdentityResources())
-                .AddDeveloperSigningCredential();
+                .AddInMemoryApiResources(Configuration.GetApiResources()) //
+                .AddInMemoryIdentityResources(Configuration.GetIdentityResources()) //
+                .AddDeveloperSigningCredential();//not certificates, but something like plug
             services.AddControllersWithViews();
         }
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -25,7 +26,6 @@ namespace Authorization.IdentityServer
             }
 
             app.UseRouting();
-
 
             app.UseIdentityServer();
 

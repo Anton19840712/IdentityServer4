@@ -9,10 +9,11 @@ namespace Authorization.IdentityServer
         public static IEnumerable<Client> GetClients() =>
         new List<Client>
         {
-            new Client //1вот этому клиенту
+            //1вот этому клиенту
+            new Client 
             {
                 ClientId = "client_id",
-                ClientSecrets = { new Secret("client_secret".ToSha256()) },
+                ClientSecrets = {new Secret("client_secret".ToSha256())},
 
                 //по какому принципу будет авторизовываться клиент
                 AllowedGrantTypes = GrantTypes.ClientCredentials, // по наиболее примитивному ClientCredentials
