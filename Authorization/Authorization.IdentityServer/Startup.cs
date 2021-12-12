@@ -18,6 +18,8 @@ namespace Authorization.IdentityServer
     {
         public void ConfigureServices(IServiceCollection services)
         {
+            //add package identityServer4, then add app.UseIdentity, then services.AddIdentityServer();
+            services.AddIdentityServer();
             services.AddControllersWithViews();
         }
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -29,9 +31,8 @@ namespace Authorization.IdentityServer
 
             app.UseRouting();
 
-            app.UseAuthentication();
 
-            app.UseAuthorization();
+            app.UseIdentityServer();
 
             app.UseEndpoints(endpoints =>
             {
