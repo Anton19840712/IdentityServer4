@@ -8,9 +8,8 @@ namespace Authorization.Orders.Api.Controllers
 {
     public class SiteController : Controller
     {
-        public IActionResult Index()
-        {
-            return View();
-        }
+        public IActionResult Index() => View();
+
+        public string GetSecrets() => "Secret string from Orders API";
     }
 }
