@@ -1,15 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 
 namespace Authorization.Orders.Api.Controllers
 {
+    [Route("[controller]")]
     public class SiteController : Controller
     {
-        public IActionResult Index() => View();
+        public IActionResult Index()
+        {
+            return View();
+        }
 
-        public string GetSecrets() => "Secret string from Orders API";
+        [Route("[action]")]
+        public string GetSecret()
+        {
+            return "Secret string from Orders API";
+        }
     }
 }
