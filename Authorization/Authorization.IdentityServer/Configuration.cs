@@ -10,7 +10,7 @@ namespace Authorization.IdentityServer
         new List<Client>
         {
             //1вот этому клиенту
-            new Client 
+            new Client
             {
                 ClientId = "client_id",
                 ClientSecrets = {new Secret("client_secret".ToSha256())},
@@ -23,14 +23,30 @@ namespace Authorization.IdentityServer
                 {
                     "OrdersAPI"
                 }
+            },
+            //1вот этому клиенту
+            new Client
+            {
+                ClientId = "client_id_mvc",
+                ClientSecrets = {new Secret("client_secret_mvc".ToSha256())},
+
+                //по какому принципу будет авторизовываться клиент
+                AllowedGrantTypes = GrantTypes.Code, // по наиболее примитивному ClientCredentials// Grant type - it s a type of interaction of server4 and clients
+                //добавили только скоуп клиента, работающего с ордерами
+
+                AllowedScopes =
+                {
+                    "OrdersAPI",
+                    "ClientMVC" //the name could be any, but should be the same as in api method.
+                }
             }
         };
 
         internal static IEnumerable<ApiResource> GetApiResources() => //2можно ходить на этот ресурс
-            new List<ApiResource> {
+                    new List<ApiResource> {
 
                 new ApiResource("OrdersAPI")
-        };
+                };
 
         public static IEnumerable<IdentityResource> GetIdentityResources() =>
             new List<IdentityResource> {
