@@ -5,9 +5,11 @@ VisualStudioVersion = 16.0.31205.134
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Authorization.Orders.Api", "Authorization.Orders.Api\Authorization.Orders.Api.csproj", "{FD7AD46F-C71B-49B9-9C48-2EBF5DC1EC00}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authorization.Users.Api", "Authorization.Users.Api\Authorization.Users.Api.csproj", "{0736A784-EF13-49FC-8D09-E23870039C70}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Authorization.Users.Api", "Authorization.Users.Api\Authorization.Users.Api.csproj", "{0736A784-EF13-49FC-8D09-E23870039C70}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authorization.IdentityServer", "Authorization.IdentityServer\Authorization.IdentityServer.csproj", "{BEB31E72-D2B8-49D9-8784-A7E13940067A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Authorization.IdentityServer", "Authorization.IdentityServer\Authorization.IdentityServer.csproj", "{BEB31E72-D2B8-49D9-8784-A7E13940067A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authorization.Client.Mvc", "Authorization.Client.Mvc\Authorization.Client.Mvc.csproj", "{D744C6F2-34B1-4C49-A21F-99940AB01B47}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{BEB31E72-D2B8-49D9-8784-A7E13940067A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BEB31E72-D2B8-49D9-8784-A7E13940067A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BEB31E72-D2B8-49D9-8784-A7E13940067A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D744C6F2-34B1-4C49-A21F-99940AB01B47}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D744C6F2-34B1-4C49-A21F-99940AB01B47}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D744C6F2-34B1-4C49-A21F-99940AB01B47}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D744C6F2-34B1-4C49-A21F-99940AB01B47}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
