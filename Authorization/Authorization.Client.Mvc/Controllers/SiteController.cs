@@ -14,7 +14,7 @@ namespace Authorization.Client.Mvc.Controllers
 
         [Authorize]
         [Route("[action]")]
-        public IActionResult Index()
+        public IActionResult Secret()
         {
             return View();
         }
