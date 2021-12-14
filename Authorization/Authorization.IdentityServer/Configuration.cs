@@ -1,6 +1,7 @@
 ﻿using IdentityServer4.Models;
 using System.Collections.Generic;
 using IdentityModel;
+using IdentityServer4;
 
 namespace Authorization.IdentityServer
 {
@@ -34,10 +35,19 @@ namespace Authorization.IdentityServer
                 AllowedGrantTypes = GrantTypes.Code, // по наиболее примитивному ClientCredentials// Grant type - it s a type of interaction of server4 and clients
                 //добавили только скоуп клиента, работающего с ордерами
 
-                AllowedScopes =
+                AllowedScopes = // where this client can go
                 {
                     "OrdersAPI",
-                    "ClientMVC" //the name could be any, but should be the same as in api method.
+                    //"UserAPI" //the name could be any, but should be the same as in api method.
+                    //"openid",
+                    //"profile",
+                    IdentityServerConstants.StandardScopes.OpenId,
+                    IdentityServerConstants.StandardScopes.Profile
+                },
+
+                RedirectUris =
+                {
+                    "https://localhost:2001/signin-oidc"
                 }
             }
         };
@@ -52,7 +62,8 @@ namespace Authorization.IdentityServer
             new List<IdentityResource> {
                 //new IdentityResources.Address(),
                 //new IdentityResources.Phone(),
-                new IdentityResources.OpenId()
+                new IdentityResources.OpenId(),
+                new IdentityResources.Profile()
             };
     }
 }
