@@ -38,17 +38,16 @@ namespace Authorization.IdentityServer
                 AllowedScopes = // where this client can go
                 {
                     "OrdersAPI",
-                    //"UserAPI" //the name could be any, but should be the same as in api method.
+                    //"UsersAPI", //the name could be any, but should be the same as in api method.
                     //"openid",
                     //"profile",
                     IdentityServerConstants.StandardScopes.OpenId,
                     IdentityServerConstants.StandardScopes.Profile
                 },
 
-                RedirectUris =
-                {
-                    "https://localhost:2001/signin-oidc"
-                }
+                RedirectUris = {"https://localhost:2001/signin-oidc"}, 
+
+                RequireConsent = false // this allows not to load page http://localhost:10001/consent? - this page appears after login, something like user agreement page
             }
         };
 
