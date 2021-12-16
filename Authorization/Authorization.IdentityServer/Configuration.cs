@@ -47,7 +47,9 @@ namespace Authorization.IdentityServer
 
                 RedirectUris = {"https://localhost:2001/signin-oidc"}, 
 
-                RequireConsent = false // this allows not to load page http://localhost:10001/consent? - this page appears after login, something like user agreement page
+                RequireConsent = false, // this allows not to load page http://localhost:10001/consent? - this page appears after login, something like user agreement page
+
+                AlwaysIncludeUserClaimsInIdToken = true
             }
         };
 

@@ -17,7 +17,7 @@ namespace Authorization.IdentityServer
                 config.UseInMemoryDatabase("MEMORY");
             })
             .AddIdentity<IdentityUser, IdentityRole>(config => //this should be before .AddAspNetIdentity<IdentityUser>(), because it could be mistake something like add 1 user
-                                                               //IUserClaimsPrincipalFactory`1 not registered error in IndentityServer implementation
+                                                               //IUserClaimsPrincipalFactory`1 not registered error in IdentityServer implementation
             {
                 config.Password.RequireDigit = false;
                 config.Password.RequireLowercase = false;
