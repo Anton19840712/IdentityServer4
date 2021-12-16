@@ -39,7 +39,8 @@ namespace Authorization.IdentityServer
             .AddInMemoryIdentityResources(Configuration.GetIdentityResources()) //
             .AddDeveloperSigningCredential();//not certificates, but something like plug
 
-            services.AddControllersWithViews();
+            services.AddControllersWithViews()
+            .AddRazorRuntimeCompilation();//adds link on the package, that allows when page has reloaded view changes on it from code. Press f5 on the page.
         }
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
