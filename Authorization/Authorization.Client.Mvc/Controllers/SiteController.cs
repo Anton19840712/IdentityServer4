@@ -1,5 +1,9 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using Authorization.Client.Mvc.ViewModels;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.IdentityModel.Tokens.Jwt;
+using System.Threading.Tasks;
 
 namespace Authorization.Client.Mvc.Controllers
 {
@@ -16,7 +20,13 @@ namespace Authorization.Client.Mvc.Controllers
         [Route("[action]")]
         public IActionResult Secret()
         {
-            return View();
+            //var jsonToken = await HttpContext.GetTokenAsync("access_token");
+
+            //var token = (JwtSecurityToken)new JwtSecurityTokenHandler().ReadToken(jsonToken);
+
+            var model = new ClaimManager(HttpContext, User);
+
+            return View(model);
         }
     }
 }
