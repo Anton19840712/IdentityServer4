@@ -17,11 +17,12 @@ namespace Authorization.Client.Mvc
 
             })
                 .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme)//need to save from token
-                .AddOpenIdConnect("oidc", config =>
+                .AddOpenIdConnect("oidc", config => //this allows to get two types of token: identity and access kinds of tokens.
                 {
                     //look at documentation: there you can see 3.1.2.1 Authentication Request: what is REQUIRED 
                     //go to the identity server and write RedirectUrls in your mvc client.
-                    config.Authority = "https://localhost:10001"; //here we go to authorize after clicking on secret link in mvc
+                    config.Authority = "https://localhost:10001"; //here this client goes to authorize after clicking on secret link in mvc
+                    // and by this address "https://localhost:10001" we have our authorization identity server
                     config.ClientId = "client_id_mvc";
                     config.ClientSecret = "client_secret_mvc";
                     config.SaveTokens = true; //means, that the data I get from the server I need to save.
