@@ -4,9 +4,9 @@ namespace Authorization.IdentityServer.Controllers
 {
     public class IdentityServerController : Controller
     {
-        public IActionResult Index()
+        public string Index()
         {
-            return View();
+            return "Identity server is active.";
         }
     }
 }
