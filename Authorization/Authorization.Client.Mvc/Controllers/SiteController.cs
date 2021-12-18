@@ -24,9 +24,10 @@ namespace Authorization.Client.Mvc.Controllers
 
             //var token = (JwtSecurityToken)new JwtSecurityTokenHandler().ReadToken(jsonToken);
 
-            var model = new ClaimManager(HttpContext, User);
+            //var model = new ClaimManager(HttpContext, User);
 
-            return View(model);
+            //return View(model);
+            return View();
         }
     }
 }
