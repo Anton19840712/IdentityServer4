@@ -3,7 +3,7 @@
     "Authorization.IdentityServer": {
       "commandName": "Project",
       "launchBrowser": true,
-      "launchUrl": "site/index",
+      "launchUrl": "identityServer/index",
       "applicationUrl": "https://localhost:10001;http://localhost:10000",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
