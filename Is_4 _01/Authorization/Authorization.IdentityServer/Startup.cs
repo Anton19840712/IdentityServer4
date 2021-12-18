@@ -9,6 +9,12 @@ namespace Authorization.IdentityServer
     {
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddIdentityServer()
+                .AddInMemoryClients(Configuration.GetClients())//Xamarin, Console, Angular, etc.
+                .AddInMemoryApiResources(Configuration.GetApiResources()) //
+                .AddInMemoryIdentityResources(Configuration.GetIdentityResources()) //
+                .AddDeveloperSigningCredential();//not certificates, but something like plug
+
             services.AddControllersWithViews();
         }
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -20,9 +26,7 @@ namespace Authorization.IdentityServer
 
             app.UseRouting();
 
-            app.UseAuthentication();
-
-            app.UseAuthorization();
+            app.UseIdentityServer();//instead of authN, authZ 
 
             app.UseEndpoints(endpoints =>
             {
