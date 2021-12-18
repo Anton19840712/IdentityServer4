@@ -9,11 +9,15 @@ namespace Authorization.IdentityServer
     {
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddIdentityServer()
-                .AddInMemoryClients(Configuration.GetClients())//Xamarin, Console, Angular, etc.
-                .AddInMemoryApiResources(Configuration.GetApiResources()) //
-                .AddInMemoryIdentityResources(Configuration.GetIdentityResources()) //
-                .AddDeveloperSigningCredential();//not certificates, but something like plug
+            services.AddIdentityServer(options =>
+            {
+                options.UserInteraction.LoginUrl = "/Auth/Login";
+            })
+
+            .AddInMemoryClients(Configuration.GetClients())//Xamarin, Console, Angular, etc.
+            .AddInMemoryApiResources(Configuration.GetApiResources()) //
+            .AddInMemoryIdentityResources(Configuration.GetIdentityResources()) //
+            .AddDeveloperSigningCredential();//not certificates, but something like plug
 
             services.AddControllersWithViews();
         }
