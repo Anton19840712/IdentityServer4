@@ -1,0 +1,13 @@
+{
+  "profiles": {
+    "Authorization.Server": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "launchUrl": "site/index",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "https://localhost:10001;http://localhost:10000"
+    }
+  }
+}
