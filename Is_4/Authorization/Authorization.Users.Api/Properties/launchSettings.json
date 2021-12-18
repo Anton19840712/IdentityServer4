@@ -3,7 +3,7 @@
     "Authorization.Users.Api": {
       "commandName": "Project",
       "launchBrowser": true,
-      "launchUrl": "site/index",
+      "launchUrl": "user/index",
       "applicationUrl": "https://localhost:9001;http://localhost:9000",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"

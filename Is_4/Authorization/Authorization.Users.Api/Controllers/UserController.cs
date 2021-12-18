@@ -4,18 +4,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Authorization.Orders.Api.Controllers
+namespace Authorization.Users.Api.Controllers
 {
-    public class OrdersController : Controller
+    public class UserController : Controller
     {
         public IActionResult Index()
         {
             return View();
         }
-        public string GetSecrets()
-        {
-            return "Secret of the method from Orders controller was returned";
-        }
     }
 }
-
