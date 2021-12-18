@@ -12,5 +12,9 @@ namespace Authorization.Users.Api.Controllers
         {
             return View();
         }
+        public string GetOrders()
+        {
+            return "These are my orders.";
+        }
     }
 }
