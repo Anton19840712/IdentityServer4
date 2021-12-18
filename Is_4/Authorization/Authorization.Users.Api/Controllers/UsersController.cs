@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Authorization.Users.Api.Controllers
 {
-    public class SiteController : Controller
+    public class UsersController : Controller
     {
         public IActionResult Index()
         {
