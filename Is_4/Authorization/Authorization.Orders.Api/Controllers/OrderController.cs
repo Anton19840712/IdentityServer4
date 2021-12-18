@@ -6,15 +6,17 @@ using System.Threading.Tasks;
 
 namespace Authorization.Orders.Api.Controllers
 {
+    //[Route("controller")]
     public class OrderController : Controller
     {
         public IActionResult Index()
         {
             return View();
         }
-        public string GetSecrets()
+        //[Route("action")]
+        public string GetOrders()
         {
-            return "Secret of the method from Orders controller was returned";
+            return "orders from the order controller were returned successfully.";
         }
     }
 }
