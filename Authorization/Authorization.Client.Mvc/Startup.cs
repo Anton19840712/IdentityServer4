@@ -12,22 +12,25 @@ namespace Authorization.Client.Mvc
         {
             services.AddAuthentication(config =>
             {
-                config.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+                config.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme; //default scheme of authorization for this client.
                 config.DefaultChallengeScheme = "oidc";
 
             })
                 .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme)//need to save from token
-                .AddOpenIdConnect("oidc", config => //this allows to get two types of token: identity and access kinds of tokens.
+                .AddOpenIdConnect("oidc", config => //этим клиентом я схожу на сторонний аутетификатор и сохраню результаты аутетификации и авторизации в куках(см вверху)
+                                                    ////this allows to get two types of token: identity and access kinds of tokens.
                 {
                     //look at documentation: there you can see 3.1.2.1 Authentication Request: what is REQUIRED 
                     //go to the identity server and write RedirectUrls in your mvc client.
-                    config.Authority = "https://localhost:10001"; //here this client goes to authorize after clicking on secret link in mvc
+                    config.Authority = "https://localhost:10001"; //here this client goes to authorize after clicking on secret link in mvc - то, куда я пойду, этим клиентом, чтобы авторизоваться
                     // and by this address "https://localhost:10001" we have our authorization identity server
-                    config.ClientId = "client_id_mvc";
+                    config.ClientId = "client_id_mvc"; //уникальный идентификатор клиента для сервера
                     config.ClientSecret = "client_secret_mvc";
-                    config.SaveTokens = true; //means, that the data I get from the server I need to save.
+                    config.SaveTokens = true; //means, that the data I get from the server I need to save. - нужно сохранить данные авторизации в куки - говоришь серверу
 
                     config.ResponseType = "code";
+
+                    // то есть по сути, зеркалишь параметры, которые указал в настройках сервера для этого клиента
 
                 }); //install Microsoft.AspNetCore.Authentication.OpenIdConnect// outside authenticator 
             //I authenticate myself, then I save auth results in cookies.
