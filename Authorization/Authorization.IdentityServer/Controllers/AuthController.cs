@@ -2,10 +2,11 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Authorization.IdentityServer.Controllers
 {
-    //[Route("[controller]")]
+    [Route("[controller]")]
     public class AuthController : Controller
     {
         private readonly SignInManager<IdentityUser> _signInManager;
@@ -28,6 +29,9 @@ namespace Authorization.IdentityServer.Controllers
             return View();
         }
 
+
+        [Authorize]
+        [Route("[action]")]
         [HttpPost]
         public async Task<IActionResult> Login(LoginViewModel model)
         {

@@ -5,6 +5,7 @@ using IdentityServer4;
 
 namespace Authorization.IdentityServer
 {
+    //Create Clients on this server
     public static class Configuration
     {
         public static IEnumerable<Client> GetClients() =>
@@ -26,6 +27,7 @@ namespace Authorization.IdentityServer
                 }
             },
             //1вот этому клиенту
+            //You create client here on server, then you go to the client itself and create his configurations in his startup
             new Client
             {
                 ClientId = "client_id_mvc",
@@ -35,9 +37,10 @@ namespace Authorization.IdentityServer
                 AllowedGrantTypes = GrantTypes.Code, // по наиболее примитивному ClientCredentials// Grant type - it s a type of interaction of server4 and clients
                 //добавили только скоуп клиента, работающего с ордерами
 
-                AllowedScopes = // where this client can go
+                AllowedScopes = // where this concrete client can go
                 {
                     "OrdersAPI",
+                    "ClientMvc",
                     //"UsersAPI", //the name could be any, but should be the same as in api method.
                     //"openid",
                     //"profile",
@@ -47,7 +50,7 @@ namespace Authorization.IdentityServer
 
                 RedirectUris = {"https://localhost:2001/signin-oidc"}, 
 
-                RequireConsent = false, // this allows not to load page http://localhost:10001/consent? - this page appears after login, something like user agreement page
+                //RequireConsent = false, // this allows not to load page http://localhost:10001/consent? - this page appears after login, something like user agreement page
 
                 AlwaysIncludeUserClaimsInIdToken = true
             }
