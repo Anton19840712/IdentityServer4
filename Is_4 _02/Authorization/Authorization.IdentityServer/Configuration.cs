@@ -41,7 +41,10 @@ namespace Authorization.IdentityServer
 
                 RequireConsent = false,
 
-                AlwaysIncludeUserClaimsInIdToken = true
+                //AlwaysIncludeUserClaimsInIdToken = true
+                //comment, because add in startup 
+                //config.GetClaimsFromUserInfoEndpoint = true;
+                //this adds claims from profile service only in access token.
         }
 
      };

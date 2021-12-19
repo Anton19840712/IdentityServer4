@@ -25,6 +25,8 @@ namespace Authorization.Client.Mvc
                     config.SaveTokens = true;
 
                     config.ResponseType = "code";
+
+                    config.GetClaimsFromUserInfoEndpoint = true;
                 });
 
             services.AddControllersWithViews();

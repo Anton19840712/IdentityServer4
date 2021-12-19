@@ -1,4 +1,5 @@
 using Authorization.IdentityServer.Data;
+using Authorization.IdentityServer.Infrastructure;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
@@ -37,7 +38,8 @@ namespace Authorization.IdentityServer
                 .AddInMemoryClients(Configuration.GetClients())//Xamarin, Console, Angular, etc.
                 .AddInMemoryApiResources(Configuration.GetApiResources()) //
                 .AddInMemoryIdentityResources(Configuration.GetIdentityResources()) //
-                .AddDeveloperSigningCredential();//not certificates, but something like plug
+                .AddDeveloperSigningCredential()//not certificates, but something like plug
+                .AddProfileService<ProfileService>();//allows to get additional users claims by bearer token
 
             services.AddControllersWithViews()
                 .AddRazorRuntimeCompilation();//adds link on the package, that allows when page has reloaded view changes on it from code. Press f5 on the page.
