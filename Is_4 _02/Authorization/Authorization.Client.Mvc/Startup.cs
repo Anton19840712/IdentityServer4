@@ -49,13 +49,16 @@ namespace Authorization.Client.Mvc
                 {
                     builder.RequireClaim(ClaimTypes.DateOfBirth);//determine claim, that will be required from method in controller: [Authorize(Policy = "HasDateOfBirth")]
                 });
-                config.AddPolicy("OlderThan", builder =>
-                {
-                    builder.AddRequirements(new OlderThanRequirement(10));
-                });
+                //config.AddPolicy("OlderThan", builder =>
+                //{
+                //    builder.AddRequirements(new OlderThanRequirement(10));
+                //});
+
+
             });
 
             services.AddSingleton<IAuthorizationHandler, OlderThanRequirementHandler>();
+            services.AddSingleton<IAuthorizationPolicyProvider, CustomAuthorizationPolicyProvider>();
         }
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
