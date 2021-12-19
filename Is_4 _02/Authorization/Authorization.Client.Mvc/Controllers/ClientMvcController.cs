@@ -2,6 +2,7 @@
 using System.IdentityModel.Tokens.Jwt;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using Authorization.Client.Mvc.ViewModels;
 using Microsoft.AspNetCore.Authentication;
@@ -26,7 +27,7 @@ namespace Authorization.Client.Mvc.Controllers
         
         [Authorize]
         [Route("[action]")]
-        public async Task<IActionResult> ClientAsync()
+        public async Task<IActionResult> Client()
         {
             //var jsonToken = await HttpContext.GetTokenAsync("access_token");
 
@@ -49,6 +50,28 @@ namespace Authorization.Client.Mvc.Controllers
             {
                 ViewBag.Message = e.Message;
             }
+
+            return View(model);
+
+        }
+
+        [Authorize(Policy = "HasDateOfBirth")]// You should manage policy in startup of the current client for instance like
+        //[Route("[action]")]//builder.RequireClaim(ClaimTypes.DateOfBirth)
+        public IActionResult Test()
+        {
+
+            var model = new ClaimManager(HttpContext, User);
+
+            return View(model);
+
+        }
+
+        [Authorize(Policy = "OlderThan")]// You should manage policy in startup of the current client for instance like
+        //[Route("[action]")]//builder.RequireClaim(ClaimTypes.DateOfBirth)
+        public IActionResult Element()
+        {
+
+            var model = new ClaimManager(HttpContext, User);
 
             return View(model);
 

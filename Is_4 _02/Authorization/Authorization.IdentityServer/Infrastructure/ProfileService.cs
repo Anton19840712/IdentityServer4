@@ -17,7 +17,7 @@ namespace Authorization.IdentityServer.Infrastructure
         {
             var claims = new List<Claim> //we create and configure claims here:
             {
-                new Claim(ClaimTypes.DateOfBirth, "01.01.2210"),
+                new Claim(ClaimTypes.DateOfBirth, "01.01.2010"),
                 new Claim(ClaimTypes.Country, "Belarus"),
                 new Claim(ClaimTypes.Gender, "male")
             };

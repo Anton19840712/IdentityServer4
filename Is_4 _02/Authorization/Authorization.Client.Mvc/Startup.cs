@@ -1,8 +1,11 @@
+using System.Security.Claims;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Authorization.Client.Mvc
 {
@@ -30,9 +33,29 @@ namespace Authorization.Client.Mvc
 
                     config.Scope.Add("OrdersAPI"); //this is variant how to manage scopes for current client
                     //we need to 
+
+                    config.GetClaimsFromUserInfoEndpoint = true; //enables to check claims in endpoint need to add claims in access
+                    //config.ClaimActions.MapAll();this copy all claims from access token to user claims
+                    config.ClaimActions.MapJsonKey(ClaimTypes.DateOfBirth, ClaimTypes.DateOfBirth);
                 });
+
+
             services.AddHttpClient();
             services.AddControllersWithViews();
+
+            services.AddAuthorization(config =>
+            {
+                config.AddPolicy("HasDateOfBirth", builder =>
+                {
+                    builder.RequireClaim(ClaimTypes.DateOfBirth);//determine claim, that will be required from method in controller: [Authorize(Policy = "HasDateOfBirth")]
+                });
+                config.AddPolicy("OlderThan", builder =>
+                {
+                    builder.AddRequirements(new OlderThanRequirement(10));
+                });
+            });
+
+            services.AddSingleton<IAuthorizationHandler, OlderThanRequirementHandler>();
         }
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
