@@ -27,8 +27,11 @@ namespace Authorization.Client.Mvc
                     config.ResponseType = "code";
 
                     config.GetClaimsFromUserInfoEndpoint = true;
-                });
 
+                    config.Scope.Add("OrdersAPI"); //this is variant how to manage scopes for current client
+                    //we need to 
+                });
+            services.AddHttpClient();
             services.AddControllersWithViews();
         }
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
